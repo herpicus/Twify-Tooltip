@@ -56,30 +56,27 @@ $.fn.TwifyTooltip = function(args)
 
 	this.__init__ = function()
 	{
-		$(document).ready(function()
+		$(Tooltip.selector).prepend('<div id="' + Config.Id + '"></div>');
+
+		$('#' + Config.Id).css({
+			'display': 'none',
+			'position': 'absolute',
+			'z-index': 99999,
+			'padding': Config.Padding,
+			'background-color': Config.Background,
+			borderRadius: Config.Border.Radius,
+			'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
+			boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
+			'font-size': Config.Font.Size + 'px',
+			'font-style': Config.Font.Style,
+			'color': Config.Color
+		});
+
+		Tooltip.addEvents();
+
+		$(document).mousemove(function(e)
 		{
-			$(Tooltip.selector).prepend('<div id="' + Config.Id + '"></div>');
-
-			$('#' + Config.Id).css({
-				'display': 'none',
-				'position': 'absolute',
-				'z-index': 99999,
-				'padding': Config.Padding,
-				'background-color': Config.Background,
-				borderRadius: Config.Border.Radius,
-				'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
-				boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
-				'font-size': Config.Font.Size + 'px',
-				'font-style': Config.Font.Style,
-				'color': Config.Color
-			});
-
-			Tooltip.addEvents();
-
-			$(document).mousemove(function(e)
-			{
-				Tooltip.Move(e.pageX, e.pageY);
-			});
+			Tooltip.Move(e.pageX, e.pageY);
 		});
 	}
 
