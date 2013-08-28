@@ -24,7 +24,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 var Config = {
 	Id: 'Twify-Tooltip',
 	Attr: 'twify-tooltip',
-	Position: 'bottom',
 	Padding: 7,
 	Font: {
 		Size: 12,
@@ -91,10 +90,10 @@ var Twify = {
 
 		this.addEvents = function()
 		{
-			$('html').on('mouseenter', '[' + Config.Attr + ']', function(event) {
+			$(document).on('mouseenter', '[' + Config.Attr + ']', function(event) {
 				Tooltip.Show($(this).attr(Config.Attr));
 			});
-			$('html').on('mouseleave', '[' + Config.Attr + ']', function(event) {
+			$(document).on('mouseleave', '[' + Config.Attr + ']', function(event) {
 				Tooltip.Hide();
 			});
 		}
