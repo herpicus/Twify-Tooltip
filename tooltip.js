@@ -21,7 +21,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-$.fn.TwifyTooltip = function(args)
+$.fn.TwifyTooltip = function(options)
 {
 	var Config = {
 		Id: 'Twify-Tooltip',
@@ -51,10 +51,12 @@ $.fn.TwifyTooltip = function(args)
 		}
 	}
 
-	$.extend(Config, args);
-
+	$.extend(Config, options);
+	
 	$(this.selector).prepend('<div id="' + Config.Id + '"></div>');
-	$('#' + Config.Id).css({
+	
+	var Id = '#' + Config.Id
+	$(Id).css({
 		'display': 'none',
 		'position': 'absolute',
 		'z-index': 99999,
@@ -63,20 +65,21 @@ $.fn.TwifyTooltip = function(args)
 		borderRadius: Config.Border.Radius,
 		'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
 		boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
-		'font-size': Config.Font.Size + 'px',
+		'font-size': Config.Font.Size,
 		'font-style': Config.Font.Style,
 		'color': Config.Color
 	});
 
-	$(this.selector).on('mouseenter', '[' + Config.Attr + ']', function(event) {
-		$('#' + Config.Id).html($(this).attr(Config.Attr)).show();
+	$(this.selector).on('mouseenter', '[' + Config.Attr + ']', function(event)
+	{
+		$(Id).html($(this).attr(Config.Attr)).show();
 		$('[' + Config.Attr + ']').mousemove(function(e)
 		{
-			$('#' + Config.Id).css("left", e.pageX - ($('#' + Config.Id).css("width").replace("px", "") / 2)).css("top", e.pageY + 25);
+			$(Id).css("left", e.pageX - ($(Id).css("width").replace("px", "") / 2)).css("top", e.pageY + 25);
 		});
 	});
 
 	$(this.selector).on('mouseleave', '[' + Config.Attr + ']', function(event) {
-		$('#' + Config.Id).hide();
+		$(Id).hide();
 	});
 };
