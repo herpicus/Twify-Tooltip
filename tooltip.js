@@ -60,19 +60,18 @@ var Twify = {
 			{
 				$('body').prepend('<div id="' + Config.Id + '"></div>');
 
-				var Style = Config;
 				$('#' + Config.Id).css({
 					'display': 'none',
 					'position': 'absolute',
 					'z-index': 99999,
-					'padding': Style.Padding,
-					'background-color': Style.Background,
-					borderRadius: Style.Border.Radius,
-					'border': Style.Border.Size + 'px ' + Style.Border.Type + ' ' + Style.Border.Color,
-					boxShadow: Style.Shadow.Box.Size.join('px ') + 'px ' + Style.Shadow.Box.Color,
-					'font-size': Style.Font.Size + 'px',
-					'font-style': Style.Font.Style,
-					'color': Style.Color
+					'padding': Config.Padding,
+					'background-color': Config.Background,
+					borderRadius: Config.Border.Radius,
+					'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
+					boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
+					'font-size': Config.Font.Size + 'px',
+					'font-style': Config.Font.Style,
+					'color': Config.Color
 				});
 
 				Tooltip.addEvents();
