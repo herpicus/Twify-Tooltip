@@ -23,7 +23,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 $.fn.TwifyTooltip = function(args)
 {
-	var Tooltip = this;
 	var Config = {
 		Id: 'Twify-Tooltip',
 		Attr: 'twify-tooltip',
@@ -54,51 +53,30 @@ $.fn.TwifyTooltip = function(args)
 
 	$.extend(Config, args);
 
-	this.__init__ = function()
-	{
-		$(Tooltip.selector).prepend('<div id="' + Config.Id + '"></div>');
+	$(this.selector).prepend('<div id="' + Config.Id + '"></div>');
+	$('#' + Config.Id).css({
+		'display': 'none',
+		'position': 'absolute',
+		'z-index': 99999,
+		'padding': Config.Padding,
+		'background-color': Config.Background,
+		borderRadius: Config.Border.Radius,
+		'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
+		boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
+		'font-size': Config.Font.Size + 'px',
+		'font-style': Config.Font.Style,
+		'color': Config.Color
+	});
 
-		$('#' + Config.Id).css({
-			'display': 'none',
-			'position': 'absolute',
-			'z-index': 99999,
-			'padding': Config.Padding,
-			'background-color': Config.Background,
-			borderRadius: Config.Border.Radius,
-			'border': Config.Border.Size + 'px ' + Config.Border.Type + ' ' + Config.Border.Color,
-			boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
-			'font-size': Config.Font.Size + 'px',
-			'font-style': Config.Font.Style,
-			'color': Config.Color
+	$(this.selector).on('mouseenter', '[' + Config.Attr + ']', function(event) {
+		$('#' + Config.Id).html($(this).attr(Config.Attr)).show();
+		$('[' + Config.Attr + ']').mousemove(function(e)
+		{
+			$('#' + Config.Id).css("left", e.pageX - ($('#' + Config.Id).css("width").replace("px", "") / 2)).css("top", e.pageY + 25);
 		});
+	});
 
-		$(Tooltip.selector).on('mouseenter', '[' + Config.Attr + ']', function(event) {
-			Tooltip.Show($(this).attr(Config.Attr));
-			$('[' + Config.Attr + ']').mousemove(function(e)
-			{
-				Tooltip.Move(e.pageX, e.pageY);
-			});
-		});
-		$(Tooltip.selector).on('mouseleave', '[' + Config.Attr + ']', function(event) {
-			Tooltip.Hide();
-		});
-	}
-
-	this.Move = function(x, y)
-	{
-		Id = '#' + Config.Id
-		$(Id).css("left", x - ($(Id).css("width").replace("px", "") / 2)).css("top", y + 25);
-	}
-
-	this.Show = function(data)
-	{
-		$('#' + Config.Id).html(data).show();
-	}
-
-	this.Hide = function()
-	{
+	$(this.selector).on('mouseleave', '[' + Config.Attr + ']', function(event) {
 		$('#' + Config.Id).hide();
-	}
-
-	this.__init__();
+	});
 };
