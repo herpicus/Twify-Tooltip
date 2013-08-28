@@ -1,7 +1,10 @@
 Twify-Tooltip
 =============
 
-A simple to use JS Tooltip
+A simple jQuery Tooltip.
+
+Requires: **jQuery**    
+*Tested with jQuery 1.10.1*
 
 Create the tooltip with **Twify.Tooltip();**
 
