@@ -72,11 +72,15 @@ $.fn.TwifyTooltip = function(args)
 			'color': Config.Color
 		});
 
-		Tooltip.addEvents();
-
-		$(document).mousemove(function(e)
-		{
-			Tooltip.Move(e.pageX, e.pageY);
+		$(Tooltip.selector).on('mouseenter', '[' + Config.Attr + ']', function(event) {
+			Tooltip.Show($(this).attr(Config.Attr));
+			$('[' + Config.Attr + ']').mousemove(function(e)
+			{
+				Tooltip.Move(e.pageX, e.pageY);
+			});
+		});
+		$(Tooltip.selector).on('mouseleave', '[' + Config.Attr + ']', function(event) {
+			Tooltip.Hide();
 		});
 	}
 
@@ -84,16 +88,6 @@ $.fn.TwifyTooltip = function(args)
 	{
 		Id = '#' + Config.Id
 		$(Id).css("left", x - ($(Id).css("width").replace("px", "") / 2)).css("top", y + 25);
-	}
-
-	this.addEvents = function()
-	{
-		$(Tooltip.selector).on('mouseenter', '[' + Config.Attr + ']', function(event) {
-			Tooltip.Show($(this).attr(Config.Attr));
-		});
-		$(Tooltip.selector).on('mouseleave', '[' + Config.Attr + ']', function(event) {
-			Tooltip.Hide();
-		});
 	}
 
 	this.Show = function(data)
