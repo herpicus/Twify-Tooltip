@@ -1,12 +1,25 @@
 Twify-Tooltip
 =============
 
-A simple jQuery Tooltip.
+A simple jQuery Tooltip Plugin.
+*Works fine with AJAX*
 
 Requires: **jQuery**    
 *Tested with jQuery 1.10.1*
 
-Create the tooltip with **Twify.Tooltip();**
+Create the tooltip with **$(selector).TwifyTooltip();**
+
+**Config Example (Optional):**
+```
+$('html').TwifyTooltip({
+   Id: 'TwifyTooltip_A',
+   Color: '#FF0000',
+   Border: {
+      Radius: 8,
+      Color: '#FFF'
+   }
+});
+```
 
 **Config:**
 ```
