@@ -91,16 +91,12 @@ var Twify = {
 
 		this.addEvents = function()
 		{
-			$('[' + Config.Attr + ']').hover(
-				function()
-				{
-					Tooltip.Show($(this).attr(Config.Attr));
-				},
-				function()
-				{
-					Tooltip.Hide();
-				}
-			);
+			$('html').on('mouseenter', '[' + Config.Attr + ']', function(event) {
+				Tooltip.Show($(this).attr(Config.Attr));
+			});
+			$('html').on('mouseleave', '[' + Config.Attr + ']', function(event) {
+				Tooltip.Hide();
+			});
 		}
 
 		this.Show = function(data)
