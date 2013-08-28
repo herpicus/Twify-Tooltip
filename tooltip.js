@@ -29,7 +29,8 @@ $.fn.TwifyTooltip = function(options)
 		Padding: 7,
 		Font: {
 			Size: 12,
-			Style: 'normal'
+			Style: 'normal',
+			Family: 'Arial, Helvetica, Sans-serif'
 		},
 		Color: '#FFF',
 		Background: 'rgba(7,12,33,0.9)',
@@ -67,6 +68,7 @@ $.fn.TwifyTooltip = function(options)
 		boxShadow: Config.Shadow.Box.Size.join('px ') + 'px ' + Config.Shadow.Box.Color,
 		'font-size': Config.Font.Size,
 		'font-style': Config.Font.Style,
+		'font-family': Config.Font.Family,
 		'color': Config.Color
 	});
 
