@@ -33,6 +33,7 @@ Padding (int): The amount of padding.
 Font (obj):
    Size (int): Font Size
    Style (str): Font Style
+   Family (str): Font Family
 
 Color (str): Text color.
   
