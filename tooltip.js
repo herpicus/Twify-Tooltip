@@ -77,7 +77,7 @@ $.fn.TwifyTooltip = function(options)
 		$(Id).html($(this).attr(Config.Attr)).show();
 		$('[' + Config.Attr + ']').mousemove(function(e)
 		{
-			$(Id).css("left", e.pageX - ($(Id).css("width").replace("px", "") / 2)).css("top", e.pageY + 25);
+			$(Id).css("left", e.pageX - ($(Id).width() / 2)).css("top", e.pageY + 25);
 		});
 	});
 
